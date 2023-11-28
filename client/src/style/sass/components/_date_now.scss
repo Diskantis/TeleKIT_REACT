@@ -1,0 +1,7 @@
+.date {
+  width: 27.33vw;
+  text-align: center;
+  color: $color-body-text;
+  font-size: 3rem;
+  @extend %font-secondary;
+}

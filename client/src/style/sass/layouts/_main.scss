@@ -1,0 +1,34 @@
+.main {
+  display: flex;
+  height: 92vh;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+
+.main_page {
+  width: 82vw;
+  margin: 10px 0;
+}
+
+.title_page {
+  width: 100%;
+  text-align: center;
+  color: $color-body-text;
+  border: 1px;
+  border-radius: 10px;
+  background-color: $color-title-page;
+  @extend %font-secondary;
+  @include font($size: 3rem, $weight: 600);
+}
+
+.main_layout {
+  width: 100%;
+  height: 94.7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px;
+  border-radius: 10px;
+  background-color: $color-main-bg;
+  margin-top: 10px;
+}

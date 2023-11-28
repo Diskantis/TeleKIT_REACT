@@ -1,0 +1,35 @@
+.sidebar {
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-radius: 10px;
+  background-color: $color-sidebar-bg;
+  margin: 10px 0;
+  padding: 30px 15px 15px 0;
+  color: $color-body-text;
+  @extend %font-secondary;
+  @include font($size: 1.8rem);
+  line-height: 1.8;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-menu li {
+  &:hover {
+    border-radius: 0 10px 10px 0;
+    background-color: $color-sidebar-sel_hover;
+  }
+}
+
+.side-menu_item {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  cursor: pointer;
+  gap: 10px;
+}

@@ -1,0 +1,54 @@
+.inputAuth {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: 100%;
+  height: 32px;
+  color: $color-body-text;
+  @extend %font-secondary;
+  @include font($size: 1.6rem);
+  background-color: $color-input-auth-bg;
+  outline: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid $color-btn-submit;
+  margin-bottom: 10px;
+  padding-left: 20px;
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $color-body-text;
+    -webkit-box-shadow: 0 0 0 40rem $color-input-auth-bg inset;
+  }
+}
+
+.input.no_empty {
+  border: none;
+  border-bottom: 2px solid #6ef439;
+}
+
+.label {
+  text-align: left;
+  color: $color-body-text;
+  @extend %font-secondary;
+  @include font($size: 1.6rem, $height: 2rem);
+  transform: translate(0, 0);
+  cursor: text;
+  position: relative;
+  left: 20px;
+  bottom: 35px;
+  transition: all 0.15s ease-out;
+}
+
+.label.no_empty {
+  text-align: left;
+  color: $color-btn-submit;
+  @include font($size: 1.2rem, $height: 2rem);
+  bottom: 65px;
+  //overflow-x: hidden;
+  //text-overflow: ellipsis;
+  //white-space: nowrap;
+  transition: all 0.15s ease-out;
+}

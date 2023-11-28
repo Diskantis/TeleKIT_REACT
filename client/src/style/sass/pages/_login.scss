@@ -1,0 +1,14 @@
+.side_title {
+  padding-right: 75px;
+  padding-left: 15px;
+}
+
+.side_author {
+  @include font($size: 1.5rem);
+  padding-left: 15px;
+}
+
+.inputs {
+  width: 50%;
+  margin-top: 50px;
+}

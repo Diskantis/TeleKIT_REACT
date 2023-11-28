@@ -1,0 +1,16 @@
+.footer {
+  min-height: 3vh;
+  background: linear-gradient(
+    90deg,
+    rgba(32, 62, 39, 1) 0%,
+    rgba(40, 80, 50, 1) 100%
+  );
+}
+
+.wrapper-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  letter-spacing: 2px;
+}
