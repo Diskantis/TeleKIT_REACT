@@ -23,10 +23,8 @@ const Registration = observer(() => {
       await registration(email, password);
 
       user.setUser(user);
-      console.log(user);
       user.setIsAuth(true);
       history.push(SCHEDULE_ROUTE);
-
     } catch (e) {
       alert(e.response.data.message);
     }
@@ -65,12 +63,13 @@ const Registration = observer(() => {
               Пароль
             </InputAuth>
           </div>
-          <Button className={"submit-btn"} onClick={click}>Зарегистрировать</Button>
+          <Button className={"submit-btn"} onClick={click}>
+            Зарегистрировать
+          </Button>
         </form>
       </div>
     </div>
-  )
-    ;
+  );
 });
 
 export default Registration;

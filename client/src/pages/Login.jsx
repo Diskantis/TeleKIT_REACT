@@ -25,7 +25,6 @@ const Login = observer(() => {
       user.setUser(user);
       user.setIsAuth(true);
       history.push(MAIN_ROUTE);
-
     } catch (e) {
       alert(e.response.data.message);
     }
@@ -39,7 +38,8 @@ const Login = observer(() => {
   return (
     <div>
       <div className="main">
-        <SideBar><p className={"side_title"}>ТЕЛЕВИЗИОННЫЙ ЖУРНАЛИСТСКИЙ КОМПЛЕКТ</p>
+        <SideBar>
+          <p className={"side_title"}>ТЕЛЕВИЗИОННЫЙ ЖУРНАЛИСТСКИЙ КОМПЛЕКТ</p>
           <small className={"side_author"}>by Zajkov Mikhail</small>
         </SideBar>
         <div className={"main_page"} onClick={() => visible()}>
@@ -67,7 +67,9 @@ const Login = observer(() => {
                 Пароль
               </InputAuth>
             </div>
-            <Button className={"submit-btn"} onClick={click}>Войти</Button>
+            <Button className={"submit-btn"} onClick={click}>
+              Войти
+            </Button>
           </div>
         </div>
       </div>

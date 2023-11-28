@@ -16,11 +16,15 @@ const HeadBar = observer(() => {
   const history = useHistory();
   const isMain = location.pathname !== MAIN_ROUTE;
 
+  const lastName = localStorage.getItem("last_name");
+  const firstName = localStorage.getItem("first_name");
+  const surName = localStorage.getItem("sur_name");
+
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
     history.push(LOGIN_ROUTE);
-    localStorage.removeItem("token");
+    localStorage.clear();
   };
 
   return (
@@ -28,26 +32,38 @@ const HeadBar = observer(() => {
       {user.isAuth ? (
         <div className={"headBar_nav"}>
           <LogoutSVG className={"logout_svg active"} onClick={() => logOut()} />
-          <NavLink className={"logo_link"} to={MAIN_ROUTE}>TeleKIT</NavLink>
-          {isMain ?
-            <MainSVG className={'main_svg active'} onClick={() => history.push(MAIN_ROUTE)}/>
-            :
-            <MainSVG className={'main_svg'} />
-          }
+          <NavLink className={"logo_link"} to={MAIN_ROUTE}>
+            TeleKIT
+          </NavLink>
+          {isMain ? (
+            <MainSVG
+              className={"main_svg active"}
+              onClick={() => history.push(MAIN_ROUTE)}
+            />
+          ) : (
+            <MainSVG className={"main_svg"} />
+          )}
         </div>
       ) : (
         <div className={"headBar_nav"}>
           <LogoutSVG className={"logout_svg"} />
-          <NavLink className={"logo_link"} to={MAIN_ROUTE}>TeleKIT</NavLink>
-          <MainSVG className={'main_svg'}/>
+          <NavLink className={"logo_link"} to={MAIN_ROUTE}>
+            TeleKIT
+          </NavLink>
+          <MainSVG className={"main_svg"} />
         </div>
       )}
-      <div className={'header'}>
-        <div className={'auth_user'}>Пользователь: Стеколенко С.М.</div>
+      <div className={"header"}>
+        <div className={"auth_user"}>
+          {user.isAuth
+            ? `Пользователь: ${lastName} ${firstName[0]}.${surName[0]}.`
+            : ""}
+        </div>
         <DateNow />
         <Clock />
       </div>
-    </div>);
+    </div>
+  );
 });
 
 export default HeadBar;
