@@ -9,8 +9,9 @@
   padding: 30px 15px 15px 0;
   color: $color-body-text;
   @extend %font-secondary;
-  @include font($size: 1.8rem);
-  line-height: 1.8;
+  @include font($size: 1.2rem);
+  line-height: 1.6;
+
 }
 
 .side-menu {
@@ -20,6 +21,7 @@
 }
 
 .side-menu li {
+
   &:hover {
     border-radius: 0 10px 10px 0;
     background-color: $color-sidebar-sel_hover;
@@ -30,6 +32,8 @@
   display: flex;
   align-items: center;
   margin-left: 15px;
+  text-decoration-line: none;
+  color: $color-body-text;
   cursor: pointer;
   gap: 10px;
 }

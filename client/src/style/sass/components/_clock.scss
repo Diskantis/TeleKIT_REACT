@@ -2,6 +2,6 @@
   width: 27.33vw;
   text-align: right;
   color: $color-body-text;
-  @extend %font-time;
-  @include font($size: 3.8rem, $height: 3.8rem, $weight: 600);
+  @extend %font-secondary;
+  @include font($size: 2.2rem, $weight: 600);
 }

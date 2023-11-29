@@ -1,5 +1,7 @@
 // Vendors
 @import "vendors/normalize";
+//@import "~normalize-scss/sass/normalize";
+//@import "~bootstrap/scss/bootstrap";
 
 // Abstract
 @import "abstract/constants";
@@ -24,4 +26,3 @@
 @import "components/clock";
 @import "components/input";
 @import "components/button";
-

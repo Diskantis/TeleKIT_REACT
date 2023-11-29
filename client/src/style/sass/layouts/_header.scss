@@ -36,7 +36,7 @@
   text-decoration-line: none;
   cursor: pointer;
   @extend %font-secondary;
-  @include font($size: 3rem, $weight: 600);
+  @include font($size: 2rem, $weight: 600);
   transition: all .2s ease-out;
   padding-top: 1px;
   &:hover {
@@ -57,5 +57,5 @@
   text-align: left;
   color: $color-body-text;
   @extend %font-secondary;
-  @include font($size: 2rem, $weight: 600);
+  @include font($size: 1.4rem, $weight: 600);
 }

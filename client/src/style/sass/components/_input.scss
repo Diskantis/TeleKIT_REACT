@@ -9,7 +9,7 @@
   height: 32px;
   color: $color-body-text;
   @extend %font-secondary;
-  @include font($size: 1.6rem);
+  @include font($size: 1rem);
   background-color: $color-input-auth-bg;
   outline: 0;
   box-shadow: none;
@@ -33,7 +33,7 @@
   text-align: left;
   color: $color-body-text;
   @extend %font-secondary;
-  @include font($size: 1.6rem, $height: 2rem);
+  @include font($size: 1rem, $height: 1rem);
   transform: translate(0, 0);
   cursor: text;
   position: relative;
@@ -45,10 +45,49 @@
 .label.no_empty {
   text-align: left;
   color: $color-btn-submit;
-  @include font($size: 1.2rem, $height: 2rem);
-  bottom: 65px;
-  //overflow-x: hidden;
-  //text-overflow: ellipsis;
-  //white-space: nowrap;
+  @include font($size: 0.8rem, $height: 1rem);
+  bottom: 60px;
   transition: all 0.15s ease-out;
+}
+
+.input-create {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  @include font($size: 1rem, $height: 1.5);
+
+  color: #adb5bd;
+  background-color: #212529;
+  //background-clip: padding-box;
+  border: 1px solid #495057;
+  border-radius: 0.375rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  //&:focus {
+  //  background-color: #212529;
+  //  color: #adb5bd;
+  //  border-color: #495057;
+  //  box-shadow: 0px 0px 0px 5px #003a6e;
+  //}
+}
+
+.input-create:focus {
+  outline: none;
+  border: 1px solid #adb5bd;
+  box-shadow: 0 0 0 3px #003a6e;
+}
+
+.label-create {
+  color: #adb5bd;
+}
+
+.form-control {
+  color: #adb5bd;
+  background-color: #212529;
+  border: 1px solid #495057;
+  &:focus {
+    background-color: #212529;
+    color: #adb5bd;
+  }
 }

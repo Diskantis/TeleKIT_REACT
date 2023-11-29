@@ -3,6 +3,7 @@ import React from "react";
 import SideBar from "../components/layouts/SideBar";
 
 import { observer } from "mobx-react-lite";
+import FormExample from "../components/layouts/CreateEmployee";
 
 const Employee = observer(() => {
   return (
@@ -17,7 +18,9 @@ const Employee = observer(() => {
         </SideBar>
         <div className={"main_page"}>
           <div className={"title_page"}>Персонал</div>
-          <div className={"main_layout"}></div>
+          <div className={"main_layout"}>
+            <FormExample />
+          </div>
         </div>
       </div>
     </div>

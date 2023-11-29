@@ -21,7 +21,7 @@ const InputAuth = ({ children, name, value, selectedInput, ...props }) => {
         value={value}
         {...props}
       ></input>
-      <label className={rootClassesLabel.join(" ")}>{children}</label>;
+      <label className={rootClassesLabel.join(" ")}>{children}</label>
     </div>
   );
 };
