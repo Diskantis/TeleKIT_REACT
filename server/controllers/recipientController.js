@@ -9,18 +9,18 @@ class RecipientController {
         first_name,
         sur_name,
         position,
-        departmentId,
-        stateId,
-        phoneId,
+        department,
+        state,
+        phone,
       } = req.body;
       const recipient = await Recipient.create({
         last_name,
         first_name,
         sur_name,
         position,
-        departmentId,
-        stateId,
-        phoneId,
+        department,
+        state,
+        phone,
       });
       return res.json(recipient);
     } catch (e) {

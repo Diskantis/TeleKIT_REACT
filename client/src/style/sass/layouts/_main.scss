@@ -18,7 +18,7 @@
   border-radius: 10px;
   background-color: $color-title-page;
   @extend %font-secondary;
-  @include font($size: 1.9rem, $weight: 600);
+  @include font($size: 1.8rem, $style: italic, $weight: 400);
 }
 
 .main_layout {

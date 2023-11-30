@@ -1,0 +1,38 @@
+.form_create_recipient {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_create_title {
+  color: $color-body-text;
+  @include font($size: 1.5rem);
+  text-align: center;
+  padding: 20px;
+}
+
+.form_create_row {
+  display: flex;
+  margin-bottom: 10px;
+  column-gap: 20px;
+}
+
+.input_name {
+  width: 300px;
+}
+
+.input_position {
+  width: 420px;
+}
+
+.input_department {
+  width: 500px;
+}
+
+.input_phone {
+  width: 200px;
+}
+
+.form_create_button {
+  width: 150px;
+  margin-top: 20px;
+}

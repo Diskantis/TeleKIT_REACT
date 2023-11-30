@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import SideBar from "../components/layouts/SideBar";
-import { SCHEDULE_ROUTE, EQUIPMENT_ROUTE, KITS_ROUTE, EMPLOYEE_ROUTE } from "../router/routes";
+import {
+  SCHEDULE_ROUTE,
+  EQUIPMENT_ROUTE,
+  KITS_ROUTE,
+  RECIPIENT_ROUTE
+} from "../router/routes";
 import CameraSVG from "../components/UI/icon/CameraSVG";
 import KitSVG from "../components/UI/icon/KitSVG";
 import { observer } from "mobx-react-lite";
@@ -17,10 +22,24 @@ const Admin = observer(() => {
       <div className="main">
         <SideBar>
           <ul className="side-menu">
-            <li><a className="side-menu_item"
-                   onClick={() => setEmployeeVisible(true)}><EmployeeSVG />Добавить администратора</a></li>
-            <li><a className="side-menu_item"
-                   onClick={() => setEquipmentVisible(true)}><CameraSVG />Добавить оборудование</a></li>
+            <li>
+              <a
+                className="side-menu_item"
+                onClick={() => setEmployeeVisible(true)}
+              >
+                <EmployeeSVG />
+                Добавить администратора
+              </a>
+            </li>
+            <li>
+              <a
+                className="side-menu_item"
+                onClick={() => setEquipmentVisible(true)}
+              >
+                <CameraSVG />
+                Добавить оборудование
+              </a>
+            </li>
           </ul>
         </SideBar>
         <div className={"main_page"}>
@@ -28,10 +47,12 @@ const Admin = observer(() => {
           <div className={"main_layout"}>
             <CreateAdmin
               show={employeeVisible}
-              onHide={() => setEmployeeVisible(false)} />
+              onHide={() => setEmployeeVisible(false)}
+            />
             <CreateEquipment
               show={equipmentVisible}
-              onHide={() => setEquipmentVisible(false)} />
+              onHide={() => setEquipmentVisible(false)}
+            />
           </div>
         </div>
       </div>
