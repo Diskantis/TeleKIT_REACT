@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import SideBar from "../components/layouts/SideBar";
-import { ADMIN_ROUTE } from "../utils/consts";
 
 import { observer } from "mobx-react-lite";
-import { Context } from "../index";
 import {
-  RECIPIENT_ROUTE,
-  EQUIPMENT_ROUTE,
-  KITS_ROUTE,
   SCHEDULE_ROUTE,
-  RECIPIENT_LIST_ROUTE
+  KITS_ROUTE,
+  EQUIPMENT_ROUTE,
+  RECIPIENT_LIST_ROUTE,
+  ADMIN_CREATE_ADMIN_ROUTE
 } from "../router/routes";
 
 import CalendarSVG from "../components/UI/icon/CalendarSVG";
@@ -21,8 +19,6 @@ import AdminSVG from "../components/UI/icon/AdminSVG";
 import ListSideMenu from "../components/layouts/ListSideMenu";
 
 const Main = observer(() => {
-  const { user } = useContext(Context);
-
   return (
     <div className="main">
       <SideBar>
@@ -51,7 +47,7 @@ const Main = observer(() => {
             {
               icon: <AdminSVG />,
               name: "Админ панель",
-              link: ADMIN_ROUTE
+              link: ADMIN_CREATE_ADMIN_ROUTE
             }
           ]}
         />
