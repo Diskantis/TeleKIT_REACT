@@ -1,6 +1,5 @@
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
-import Admin from "../pages/Admin";
 import Main from "../pages/Main";
 
 import Schedule from "../pages/Schedule";
@@ -13,16 +12,21 @@ import RecipientNew from "../pages/RecipientNew";
 
 import Shop from "../pages/Shop";
 import Basket from "../pages/Basket";
+import AdminCreateAdmin from "../pages/AdminCreateAdmin";
+import AdminCreateEquipment from "../pages/AdminCreateEquipment";
 
 export const LOGIN_ROUTE = "/login";
 export const REGISTRATION_ROUTE = "/registration";
 
 export const MAIN_ROUTE = "/";
-export const ADMIN_ROUTE = "/admin";
+export const ADMIN_CREATE_ADMIN_ROUTE = "/admin/create_admin";
+export const ADMIN_CREATE_EQUIPMENT_ROUTE = "/admin/create_equipment";
+
 export const SCHEDULE_ROUTE = "/schedule";
 export const KITS_ROUTE = "/kits";
 export const EQUIPMENT_ROUTE = "/equipment";
 export const DEVICE_ROUTE = "/device";
+
 export const RECIPIENT_NEW_ROUTE = "/recipient/new";
 export const RECIPIENT_LIST_ROUTE = "/recipient/list";
 
@@ -31,12 +35,14 @@ export const BASKET_ROUTE = "/basket";
 
 export const authRoutes = [
   { path: MAIN_ROUTE, Component: Main },
-  { path: ADMIN_ROUTE, Component: Admin },
+  { path: ADMIN_CREATE_ADMIN_ROUTE, Component: AdminCreateAdmin },
+  { path: ADMIN_CREATE_EQUIPMENT_ROUTE, Component: AdminCreateEquipment },
   { path: SCHEDULE_ROUTE, Component: Schedule },
   { path: KITS_ROUTE, Component: Kits },
   { path: KITS_ROUTE + "/:id", Component: KitPage },
   { path: EQUIPMENT_ROUTE, Component: Equipment },
   { path: DEVICE_ROUTE + "/:id", Component: DevicePage },
+
   { path: RECIPIENT_NEW_ROUTE, Component: RecipientNew },
   { path: RECIPIENT_LIST_ROUTE, Component: RecipientList }
 ];

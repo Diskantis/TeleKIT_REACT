@@ -7,7 +7,7 @@ import { registration } from "../../http/userAPI";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index";
 
-const CreateAdmin = observer(({ show, onHide }) => {
+const FormCreateAdmin = observer(() => {
   const { user } = useContext(Context);
 
   const [lastName, setLastName] = useState("");
@@ -36,86 +36,79 @@ const CreateAdmin = observer(({ show, onHide }) => {
   };
 
   return (
-    <div>
-      {show && (
-        <form className={"main_layout"} onClick={() => visible()}>
-          <div className={"create_admin_title"}>
-            Регистрация нового администратора
-          </div>
-          <div className={"reg_inputs"} onClick={e => e.stopPropagation()}>
-            <InputAuth
-              type="text"
-              name="lastName"
-              selectedInput={selInput}
-              value={lastName}
-              onFocus={() => setSelInput("lastName")}
-              onChange={e => setLastName(e.target.value)}
-            >
-              Фамилия
-            </InputAuth>
-            <InputAuth
-              type="text"
-              name="firstName"
-              selectedInput={selInput}
-              value={firstName}
-              onFocus={() => setSelInput("firstName")}
-              onChange={e => setFirstName(e.target.value)}
-            >
-              Имя
-            </InputAuth>
-            <InputAuth
-              type="text"
-              name="surName"
-              selectedInput={selInput}
-              value={surName}
-              onFocus={() => setSelInput("surName")}
-              onChange={e => setSurName(e.target.value)}
-            >
-              Отчество
-            </InputAuth>
-            <InputAuth
-              type="text"
-              name="email"
-              selectedInput={selInput}
-              value={email}
-              onFocus={() => setSelInput("email")}
-              onChange={e => setEmail(e.target.value)}
-            >
-              Логин
-            </InputAuth>
-            <InputAuth
-              type="password"
-              name="password"
-              selectedInput={selInput}
-              value={password}
-              onFocus={() => setSelInput("password")}
-              onChange={e => setPassword(e.target.value)}
-            >
-              Пароль
-            </InputAuth>
-            <InputAuth
-              type="text"
-              name="role"
-              selectedInput={selInput}
-              value={role.toUpperCase()}
-              onFocus={() => setSelInput("role")}
-              onChange={e => setRole(e.target.value)}
-            >
-              Роль
-            </InputAuth>
-          </div>
-          <div className={"reg_buttons"}>
-            <Button className={"submit-btn"} onClick={onHide}>
-              Закрыть
-            </Button>
-            <Button className={"submit-btn"} onClick={click}>
-              Зарегистрировать
-            </Button>
-          </div>
-        </form>
-      )}
-    </div>
+    <form className={"main_layout"} onClick={() => visible()}>
+      <div className={"create_admin_title"}>
+        Регистрация нового администратора
+      </div>
+      <div className={"reg_inputs"} onClick={e => e.stopPropagation()}>
+        <InputAuth
+          type="text"
+          name="lastName"
+          selectedInput={selInput}
+          value={lastName}
+          onFocus={() => setSelInput("lastName")}
+          onChange={e => setLastName(e.target.value)}
+        >
+          Фамилия
+        </InputAuth>
+        <InputAuth
+          type="text"
+          name="firstName"
+          selectedInput={selInput}
+          value={firstName}
+          onFocus={() => setSelInput("firstName")}
+          onChange={e => setFirstName(e.target.value)}
+        >
+          Имя
+        </InputAuth>
+        <InputAuth
+          type="text"
+          name="surName"
+          selectedInput={selInput}
+          value={surName}
+          onFocus={() => setSelInput("surName")}
+          onChange={e => setSurName(e.target.value)}
+        >
+          Отчество
+        </InputAuth>
+        <InputAuth
+          type="text"
+          name="email"
+          selectedInput={selInput}
+          value={email}
+          onFocus={() => setSelInput("email")}
+          onChange={e => setEmail(e.target.value)}
+        >
+          Логин
+        </InputAuth>
+        <InputAuth
+          type="password"
+          name="password"
+          selectedInput={selInput}
+          value={password}
+          onFocus={() => setSelInput("password")}
+          onChange={e => setPassword(e.target.value)}
+        >
+          Пароль
+        </InputAuth>
+        <InputAuth
+          type="text"
+          name="role"
+          selectedInput={selInput}
+          value={role.toUpperCase()}
+          onFocus={() => setSelInput("role")}
+          onChange={e => setRole(e.target.value)}
+        >
+          Роль
+        </InputAuth>
+      </div>
+      <div className={"reg_buttons"}>
+        <Button className={"submit-btn"} onClick={click}>
+          Зарегистрировать
+        </Button>
+      </div>
+    </form>
   );
 });
 
-export default CreateAdmin;
+export default FormCreateAdmin;
