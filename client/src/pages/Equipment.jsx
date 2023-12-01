@@ -1,60 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
+
+import ListSideMenu from "../components/layouts/ListSideMenu";
 
 import SideBar from "../components/layouts/SideBar";
 import CalendarSVG from "../components/UI/icon/CalendarSVG";
 import KitSVG from "../components/UI/icon/KitSVG";
 import CameraSVG from "../components/UI/icon/CameraSVG";
 
-// import CreateType from "../components/modals/CreateType";
-// import CreateBrand from "../components/modals/CreateBrand";
-// import CreateDevice from "../components/modals/CreateDevice";
 import { observer } from "mobx-react-lite";
+import { EQUIPMENT_ROUTE } from "../router/routes";
 
 const Equipment = observer(() => {
-  const [typeVisible, setTypeVisible] = useState(false);
-  const [brandVisible, setBrandVisible] = useState(false);
-  const [deviceVisible, setDeviceVisible] = useState(false);
-
   return (
     <div>
       <div className="main">
         <SideBar>
-          <ul className="side-menu">
-            <li>
-              <a
-                className="side-menu_item"
-                onClick={() => setTypeVisible(true)}
-              >
-                <CalendarSVG />
-                Добавить тип
-              </a>
-            </li>
-            <li>
-              <a
-                className="side-menu_item"
-                onClick={() => setBrandVisible(true)}
-              >
-                <KitSVG />
-                Добавить бренд
-              </a>
-            </li>
-            <li>
-              <a
-                className="side-menu_item"
-                onClick={() => setDeviceVisible(true)}
-              >
-                <CameraSVG />
-                Добавить устройство
-              </a>
-            </li>
-          </ul>
-          {/*<CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>*/}
-          {/*<CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>*/}
-          {/*<CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>*/}
+          <ListSideMenu
+            items={[
+              {
+                icon: <CalendarSVG />,
+                name: "Добавить тип",
+                link: EQUIPMENT_ROUTE
+              },
+              {
+                icon: <KitSVG />,
+                name: "Добавить бренд",
+                link: EQUIPMENT_ROUTE
+              },
+              {
+                icon: <CameraSVG />,
+                name: "Добавить устройство",
+                link: EQUIPMENT_ROUTE
+              }
+            ]}
+          />
         </SideBar>
-        <div className={"main_page"}>
+        <div className={"main_layout"}>
           <div className={"title_page"}>Оборудование</div>
-          <div className={"main_layout"}></div>
+          <div className={"main_page"}></div>
         </div>
       </div>
     </div>

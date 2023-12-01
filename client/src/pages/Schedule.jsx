@@ -15,9 +15,9 @@ const Schedule = observer(() => {
             {/*<li><a className="side-menu_item" to={EQUIPMENT_ROUTE}><CameraSVG/>Добавить оборудование</a></li>*/}
           </ul>
         </SideBar>
-        <div className={"main_page"}>
+        <div className={"main_layout"}>
           <div className={"title_page"}>Расписание выездов</div>
-          <div className={"main_layout"}></div>
+          <div className={"main_page"}></div>
         </div>
       </div>
     </div>

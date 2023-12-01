@@ -35,28 +35,28 @@ const FormCreateRecipient = () => {
   };
 
   return (
-    <div className={"form_create_recipient"}>
-      <div className={"form_create_title"}>
+    <div className={"form_recipient"}>
+      <div className={"form_recipient_title"}>
         Добавить нового получателя оборудования
       </div>
       <div className={"form_create_row"}>
         <InputCreate
           value={lastName}
-          className={"input_name"}
+          className={"input_create_name"}
           onChange={e => setLastName(e.target.value)}
         >
           Фамилия
         </InputCreate>
         <InputCreate
           value={firstName}
-          className={"input_name"}
+          className={"input_create_name"}
           onChange={e => setFirstName(e.target.value)}
         >
           Имя
         </InputCreate>
         <InputCreate
           value={surName}
-          className={"input_name"}
+          className={"input_create_name"}
           onChange={e => setSurName(e.target.value)}
         >
           Отчество
@@ -64,7 +64,7 @@ const FormCreateRecipient = () => {
         <InputCreate
           type="tel"
           value={phone}
-          className={"input_phone"}
+          className={"input_create_phone"}
           placeholder={"+375"}
           maxlength={"17"}
           onChange={e => setPhone(e.target.value)}
@@ -74,14 +74,14 @@ const FormCreateRecipient = () => {
       </div>
       <div className={"form_create_row"}>
         <InputCreate
-          className={"input_position"}
+          className={"input_create_position"}
           value={position}
           onChange={e => setPosition(e.target.value)}
         >
           Должность
         </InputCreate>
         <InputCreate
-          className={"input_department"}
+          className={"input_create_department"}
           value={department}
           onChange={e => setDepartment(e.target.value)}
         >

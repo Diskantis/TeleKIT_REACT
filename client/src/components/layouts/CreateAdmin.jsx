@@ -38,7 +38,7 @@ const CreateAdmin = observer(({ show, onHide }) => {
   return (
     <div>
       {show && (
-        <form className={"main_page"} onClick={() => visible()}>
+        <form className={"main_layout"} onClick={() => visible()}>
           <div className={"create_admin_title"}>
             Регистрация нового администратора
           </div>

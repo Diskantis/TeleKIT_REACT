@@ -42,9 +42,9 @@ const Admin = observer(() => {
             </li>
           </ul>
         </SideBar>
-        <div className={"main_page"}>
+        <div className={"main_layout"}>
           <div className={"title_page"}>Административная панель</div>
-          <div className={"main_layout"}>
+          <div className={"main_page"}>
             <CreateAdmin
               show={employeeVisible}
               onHide={() => setEmployeeVisible(false)}

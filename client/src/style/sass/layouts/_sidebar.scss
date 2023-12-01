@@ -1,8 +1,8 @@
 .sidebar {
-  width: 15vw;
+  width: 290px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   border-radius: 10px;
   background-color: $color-sidebar-bg;
   margin: 10px 0;

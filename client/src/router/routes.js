@@ -8,7 +8,8 @@ import Kits from "../pages/Kits";
 import KitPage from "../pages/KitPage";
 import Equipment from "../pages/Equipment";
 import DevicePage from "../pages/DevicePage";
-import Recipient from "../pages/Recipient";
+import RecipientList from "../pages/RecipientList";
+import RecipientNew from "../pages/RecipientNew";
 
 import Shop from "../pages/Shop";
 import Basket from "../pages/Basket";
@@ -22,7 +23,8 @@ export const SCHEDULE_ROUTE = "/schedule";
 export const KITS_ROUTE = "/kits";
 export const EQUIPMENT_ROUTE = "/equipment";
 export const DEVICE_ROUTE = "/device";
-export const RECIPIENT_ROUTE = "/recipient";
+export const RECIPIENT_NEW_ROUTE = "/recipient/new";
+export const RECIPIENT_LIST_ROUTE = "/recipient/list";
 
 export const SHOP_ROUTE = "/shop";
 export const BASKET_ROUTE = "/basket";
@@ -35,7 +37,8 @@ export const authRoutes = [
   { path: KITS_ROUTE + "/:id", Component: KitPage },
   { path: EQUIPMENT_ROUTE, Component: Equipment },
   { path: DEVICE_ROUTE + "/:id", Component: DevicePage },
-  { path: RECIPIENT_ROUTE, Component: Recipient }
+  { path: RECIPIENT_NEW_ROUTE, Component: RecipientNew },
+  { path: RECIPIENT_LIST_ROUTE, Component: RecipientList }
 ];
 
 export const publicRoutes = [

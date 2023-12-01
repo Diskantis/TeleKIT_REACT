@@ -9,7 +9,8 @@ import {
   RECIPIENT_ROUTE,
   EQUIPMENT_ROUTE,
   KITS_ROUTE,
-  SCHEDULE_ROUTE
+  SCHEDULE_ROUTE,
+  RECIPIENT_LIST_ROUTE
 } from "../router/routes";
 
 import CalendarSVG from "../components/UI/icon/CalendarSVG";
@@ -17,7 +18,7 @@ import KitSVG from "../components/UI/icon/KitSVG";
 import CameraSVG from "../components/UI/icon/CameraSVG";
 import PeopleSVG from "../components/UI/icon/PeopleSVG";
 import AdminSVG from "../components/UI/icon/AdminSVG";
-import ListSideMenu from "../components/ListSideMenu";
+import ListSideMenu from "../components/layouts/ListSideMenu";
 
 const Main = observer(() => {
   const { user } = useContext(Context);
@@ -45,7 +46,7 @@ const Main = observer(() => {
             {
               icon: <PeopleSVG />,
               name: "Получатели",
-              link: RECIPIENT_ROUTE
+              link: RECIPIENT_LIST_ROUTE
             },
             {
               icon: <AdminSVG />,

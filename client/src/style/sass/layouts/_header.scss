@@ -1,5 +1,6 @@
 .headBar {
-  min-height: 5vh;
+  width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,21 +9,22 @@
 }
 
 .headBar_nav {
-  width: 15vw;
+  width: 290px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logout_svg, .main_svg {
+.logout_svg,
+.main_svg {
   width: 35px;
   height: 35px;
   fill: $color-body-text;
   cursor: pointer;
   opacity: 0;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   &:hover {
-    fill:$color-logo-link;
+    fill: $color-logo-link;
   }
 }
 
@@ -37,7 +39,7 @@
   cursor: pointer;
   @extend %font-secondary;
   @include font($size: 2rem, $weight: 600);
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   padding-top: 1px;
   &:hover {
     color: $color-logo-link;
@@ -46,7 +48,8 @@
 }
 
 .header {
-  width: 82vw;
+  width: calc(100vw - 330px);
+  padding-left: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -39,7 +39,7 @@ const Registration = observer(() => {
     <div>
       <div className="main">
         <SideBar />
-        <form className={"main_page"} onClick={() => visible()}>
+        <form className={"main_layout"} onClick={() => visible()}>
           <h1 className={"title_page"}>Регистрация</h1>
           <div className={"inputs"} onClick={e => e.stopPropagation()}>
             <InputAuth

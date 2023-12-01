@@ -1,9 +1,9 @@
-.form_create_recipient {
+.form_recipient {
   display: flex;
   flex-direction: column;
 }
 
-.form_create_title {
+.form_recipient_title {
   color: $color-body-text;
   @include font($size: 1.5rem);
   text-align: center;
@@ -16,19 +16,19 @@
   column-gap: 20px;
 }
 
-.input_name {
+.input_create_name {
   width: 300px;
 }
 
-.input_position {
+.input_create_position {
   width: 420px;
 }
 
-.input_department {
+.input_create_department {
   width: 500px;
 }
 
-.input_phone {
+.input_create_phone {
   width: 200px;
 }
 

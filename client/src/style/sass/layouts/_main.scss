@@ -1,17 +1,19 @@
 .main {
+  width: 100%;
+  height: calc(100vh - 80px);
   display: flex;
-  height: 92vh;
-  margin: 0 20px;
+  padding: 0 20px;
   justify-content: space-between;
 }
 
-.main_page {
-  width: 82vw;
+.main_layout {
+  width: calc(100vw - 330px);
   margin: 10px 0;
+  padding-left: 20px;
 }
 
 .title_page {
-  width: 100%;
+  height: 35px;
   text-align: center;
   color: $color-body-text;
   border: 1px;
@@ -21,9 +23,8 @@
   @include font($size: 1.8rem, $style: italic, $weight: 400);
 }
 
-.main_layout {
-  width: 100%;
-  height: 94.7%;
+.main_page {
+  height: calc(100vh - 145px);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,0 +1,28 @@
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+.table th {
+  font-weight: bold;
+  color: #adb5bd;
+  background-color: #2c2c2c;
+  padding: 5px 0 5px 10px;
+  border-left: 1px solid #495057;
+}
+.table td {
+  color: #adb5bd;
+  text-overflow: ellipsis;
+  background-color: #2c2c2c;
+  border: 1px solid #495057;
+  padding: 5px 45px 5px 10px;
+}
+.table tr td:first-child,
+.table tr th:first-child {
+  border-left: none;
+  padding: 5px 10px 5px 10px;
+}
+.table tr td:last-child,
+.table tr th:last-child {
+  border-right: none;
+}
