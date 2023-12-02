@@ -14,7 +14,7 @@ import EmployeeSVG from "../components/UI/icon/EmployeeSVG";
 import ListSideMenu from "../components/layouts/ListSideMenu";
 import FormCreateAdmin from "../components/layouts/CreateAdmin";
 
-const AdminCreateAdmin = observer(() => {
+const NewAdmin = observer(() => {
   return (
     <div>
       <div className="main">
@@ -45,4 +45,4 @@ const AdminCreateAdmin = observer(() => {
   );
 });
 
-export default AdminCreateAdmin;
+export default NewAdmin;

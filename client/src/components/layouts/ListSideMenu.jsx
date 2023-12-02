@@ -6,7 +6,7 @@ const ListSideMenu = ({ items }) => {
   return (
     <ul className="side-menu">
       {items.map(item => (
-        <li>
+        <li key={item.name}>
           <a className="side-menu_item" onClick={() => history.push(item.link)}>
             {item.icon}
             {item.name}

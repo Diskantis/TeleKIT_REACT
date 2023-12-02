@@ -11,7 +11,7 @@ import { RECIPIENT_LIST_ROUTE, RECIPIENT_NEW_ROUTE } from "../router/routes";
 
 import { observer } from "mobx-react-lite";
 
-const RecipientNew = observer(() => {
+const NewRecipient = observer(() => {
   return (
     <div>
       <div className="main">
@@ -42,4 +42,4 @@ const RecipientNew = observer(() => {
   );
 });
 
-export default RecipientNew;
+export default NewRecipient;

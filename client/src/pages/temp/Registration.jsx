@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
 
 import { Button } from "react-bootstrap";
-import SideBar from "../components/layouts/SideBar";
-import InputAuth from "../components/UI/InputAuth";
+import SideBar from "../../components/layouts/SideBar";
+import InputAuth from "../../components/UI/InputAuth";
 
-import { SCHEDULE_ROUTE } from "../router/routes";
+import { SCHEDULE_ROUTE } from "../../router/routes";
 import { useHistory } from "react-router-dom";
-import { registration } from "../http/userAPI";
+import { registration } from "../../http/userAPI";
 import { observer } from "mobx-react-lite";
-import { Context } from "../index";
+import { Context } from "../../index";
 
 const Registration = observer(() => {
   const { user } = useContext(Context);

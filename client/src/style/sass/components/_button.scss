@@ -16,3 +16,19 @@
     background-color: $color-btn-submit_hover;
   }
 }
+.btn-edit_del {
+  --bs-btn-padding-x: 0.6em;
+  --bs-btn-padding-y: 0.375rem;
+  --bs-btn-color: #adb5bd;
+  --bs-btn-border-color: #adb5bd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #adb5bd;
+  --bs-btn-hover-border-color: #adb5bd;
+}
+
+.success {
+  --bs-btn-hover-bg: #198754;
+}
+.danger {
+  --bs-btn-hover-bg: #dc3545;
+}

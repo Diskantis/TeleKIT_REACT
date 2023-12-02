@@ -14,7 +14,7 @@ import EmployeeSVG from "../components/UI/icon/EmployeeSVG";
 import CreateEquipment from "../components/layouts/CreateEquipment";
 import ListSideMenu from "../components/layouts/ListSideMenu";
 
-const AdminCreateEquipment = observer(() => {
+const NewEquipment = observer(() => {
   return (
     <div>
       <div className="main">
@@ -45,4 +45,4 @@ const AdminCreateEquipment = observer(() => {
   );
 });
 
-export default AdminCreateEquipment;
+export default NewEquipment;

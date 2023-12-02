@@ -5,7 +5,14 @@ export const createRecipient = async recipient => {
   return data;
 };
 
-export const fetchRecipient = async () => {
-  const { data } = await $host.get("api/recipient");
+export const fetchRecipients = async (page, limit= 5) => {
+  const { data } = await $host.get("api/recipient", {params: {
+      page, limit
+    }});
   return data;
 };
+
+// export const fetchRecipients = async () => {
+//   const { data } = await $host.get("api/recipient");
+//   return data;
+// };
