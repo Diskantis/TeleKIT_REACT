@@ -9,6 +9,7 @@ export default class RecipientStore {
         makeAutoObservable(this)
     }
 
+// setters
     setRecipients(recipients) {
         this._recipients = recipients
     }
@@ -25,6 +26,7 @@ export default class RecipientStore {
         this._totalCount = count
     }
 
+// getters
     get recipients() {
         return this._recipients
     }

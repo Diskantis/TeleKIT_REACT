@@ -2,26 +2,30 @@ import { useContext, useEffect } from "react";
 
 import { Context } from "../../index";
 import { fetchRecipients } from "../../http/repicientAPI";
-import DeliteSVG from "../UI/icon/DeliteSVG";
+import DeleteSVG from "../UI/icon/DeleteSVG";
 import EditSVG from "../UI/icon/EditSVG";
 import { Button } from "react-bootstrap";
 
 function RenderListRecipient() {
   const { recipient } = useContext(Context);
 
-  useEffect(() => {
-    fetchRecipients(null, null, 1, 2).then(data => {
-      recipient.setRecipients(data.rows);
-      recipient.setTotalCount(data.count);
-    });
-  }, []);
-
   // useEffect(() => {
-  //   fetchRecipients().then(data => {
-  //     recipient.setRecipients(data);
+  //   fetchRecipients(null, null, 1, 2).then(data => {
+  //     recipient.setRecipients(data.rows);
+  //     recipient.setTotalCount(data.count);
   //   });
   // }, []);
 
+  useEffect(() => {
+    fetchRecipients().then(data => {
+      recipient.setRecipients(data);
+    });
+  }, []);
+
+  const handleEdit = (recipientId) => {
+    console.log(recipientId);
+    // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
+  };
   const handleDelete = (recipientId) => {
     console.log(recipientId);
     // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
@@ -59,12 +63,12 @@ function RenderListRecipient() {
             <td>{recipient.state}</td>
             <td>
               <Button variant="outline-light btn-edit_del success me-2"
-                onClick={() => handleDelete(recipient.id)}
+                onClick={() => handleEdit(recipient.id)}
               ><EditSVG/>
               </Button>
               <Button variant="outline-light btn-edit_del danger"
                 onClick={() => handleDelete(recipient.id)}
-              ><DeliteSVG/>
+              ><DeleteSVG/>
               </Button>
             </td>
           </tr>
@@ -77,8 +81,3 @@ function RenderListRecipient() {
 }
 
 export default RenderListRecipient;
-
-// variant="danger"
-// variant="utline-light"
-// variant="success me-2"
-// variant="outline-success me-2"

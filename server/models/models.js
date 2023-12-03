@@ -28,24 +28,8 @@ const Recipient = sequelize.define("recipient", {
 //   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 //   name: { type: DataTypes.STRING, unique: true, allowNull: false },
 // });
-//
-// const State = sequelize.define("state", {
-//   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-//   name: { type: DataTypes.STRING, unique: true, allowNull: false },
-// });
-//
-// const Phone = sequelize.define("phone", {
-//   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-//   number: { type: DataTypes.STRING, unique: true, allowNull: false },
-// });
 
 // Department.hasMany(Recipient);
 // Recipient.belongsTo(Department);
-//
-// State.hasMany(Recipient);
-// Recipient.belongsTo(State);
-//
-// Recipient.hasMany(Phone);
-// Phone.belongsTo(Recipient);
 
 module.exports = { User, Recipient };
