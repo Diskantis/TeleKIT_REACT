@@ -4,9 +4,11 @@ const ApiError = require("../error/ApiError");
 class DepartmentController {
   async create(req, res, next) {
     try {
-      const { name } = req.body;
-      const department = await Department.create({ name });
+      const {name} = req.body;
+      const department = await Department.create({name})
+      console.log(department);
       return res.json(department);
+
     } catch (e) {
       next(ApiError.badRequest(e.message));
     }

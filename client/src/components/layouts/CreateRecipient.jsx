@@ -2,37 +2,78 @@ import { useState } from "react";
 
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
+// import { AutoComplete } from "primereact/autocomplete";
 import { Button } from "react-bootstrap";
 import { createRecipient } from "../../http/repicientAPI";
+import { createDepartment } from "../../http/departmentAPI";
 
 const FormCreateRecipient = () => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
   const [position, setPosition] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState("Дирекция");
   const [state, setState] = useState("Штатный сотрудник");
   const [phone, setPhone] = useState("");
 
+  // const [value, setValue] = useState("");
+  // const [items, setItems] = useState([]);
+
+//   const addRecipient = () => {
+//   createDepartment({name: department})
+// }
+
+  // const addRecipient = () => {
+  //   const formData = new FormData();
+  //   formData.append("last_name", lastName);
+  //   formData.append("first_name", firstName);
+  //   formData.append("sur_name", surName);
+  //   formData.append("position", position);
+  //   // formData.append("departmentId", department);
+  //   formData.append("state", state);
+  //   formData.append("phone", phone);
+  //   createRecipient(formData).then(() => {
+  //     setLastName("");
+  //     setFirstName("");
+  //     setSurName("");
+  //     setPosition("");
+  //     setDepartment("");
+  //     setState("Штатный сотрудник");
+  //     setPhone("");
+  //   });
+  // };
+
   const addRecipient = () => {
-    createRecipient({
-      last_name: lastName,
-      first_name: firstName,
-      sur_name: surName,
-      position: position,
-      department: department,
-      state: state,
-      phone: phone
+    createDepartment({
+      name: department
     }).then(() => {
-      setLastName("");
-      setFirstName("");
-      setSurName("");
-      setPosition("");
       setDepartment("");
-      setState("Штатный сотрудник");
-      setPhone("");
     });
+    // createRecipient({
+    //   last_name: lastName,
+    //   first_name: firstName,
+    //   sur_name: surName,
+    //   position: position,
+    //   state: state,
+    //   phone: phone
+    // })
+    //   .then(() => {
+    //   setLastName("");
+    //   setFirstName("");
+    //   setSurName("");
+    //   setPosition("");
+    //   setState("Штатный сотрудник");
+    //   setPhone("");
+    // });
+
   };
+
+  // const items = ['Тех дир', 'Инфо дир', 'Спец дир']
+
+  // const search = (event) => {
+  //   let _items = [...Array(10).keys()];
+  //   setItems(event.query ? [...Array(10).keys()].map(item => event.query + "-" + item) : _items);
+  // };
 
   return (
     <div className={"form_recipient"}>
@@ -80,6 +121,14 @@ const FormCreateRecipient = () => {
         >
           Должность
         </InputCreate>
+        {/*<AutoComplete*/}
+        {/*  className={"input_create_department"}*/}
+        {/*  value={value}*/}
+        {/*  suggestions={items}*/}
+        {/*  completeMethod={search}*/}
+        {/*  onChange={(e) => setValue(e.value)}*/}
+        {/*  dropdown*/}
+        {/*/>*/}
         <InputCreate
           className={"input_create_department"}
           value={department}
@@ -91,6 +140,10 @@ const FormCreateRecipient = () => {
           defaultValue={state}
           className={"select-state"}
           onChange={e => setState(e.target.value)}
+          options={[
+            { value: "Штатный сотрудник" },
+            { value: "Договор подряда" }
+          ]}
         >
           Трудовые отношения
         </InputSelect>

@@ -9,18 +9,18 @@ class RecipientController {
         first_name,
         sur_name,
         position,
-        department,
+        departmentId,
         state,
-        phone,
+        phone
       } = req.body;
       const recipient = await Recipient.create({
         last_name,
         first_name,
         sur_name,
         position,
-        department,
+        departmentId,
         state,
-        phone,
+        phone
       });
       return res.json(recipient);
     } catch (e) {
@@ -32,6 +32,18 @@ class RecipientController {
     const recipients = await Recipient.findAll();
     return res.json(recipients);
   }
+
+  // async getAll(req, res) {
+  //   let { limit, page } = req.query;
+  //   let recipients;
+  //   page = page || 1;
+  //   limit = limit || 9;
+  //   let offset = page * limit - limit;
+  //
+  //   recipients = await Recipient.findAndCountAll({ where: limit, offset });
+  //
+  //   return res.json(recipients);
+  // }
 }
 
 module.exports = new RecipientController();
