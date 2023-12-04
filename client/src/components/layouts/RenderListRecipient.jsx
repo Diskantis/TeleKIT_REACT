@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react";
 
-import { Context } from "../../index";
-import { fetchRecipients } from "../../http/repicientAPI";
 import DeleteSVG from "../UI/icon/DeleteSVG";
 import EditSVG from "../UI/icon/EditSVG";
 import { Button } from "react-bootstrap";
 
-function RenderListRecipient() {
+import { fetchRecipients } from "../../http/repicientAPI";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
+
+const RenderListRecipient = observer(() => {
   const { recipient } = useContext(Context);
 
   useEffect(() => {
@@ -22,12 +24,12 @@ function RenderListRecipient() {
   //   });
   // }, []);
 
-  const handleEdit = (recipientId) => {
+  const handleEdit = recipientId => {
     console.log(recipientId);
     // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
   };
 
-  const handleDelete = (recipientId) => {
+  const handleDelete = recipientId => {
     console.log(recipientId);
     // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
   };
@@ -39,51 +41,54 @@ function RenderListRecipient() {
       </div>
       <table className={"table"}>
         <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Фамилия</th>
-          <th scope="col">Имя</th>
-          <th scope="col">Отчество</th>
-          <th scope="col">Телефон</th>
-          <th scope="col">Должность</th>
-          <th scope="col">Дирекция</th>
-          <th scope="col">Трудовые отношения</th>
-          <th scope="col"></th>
-        </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Должность</th>
+            <th scope="col">Дирекция</th>
+            <th scope="col">Трудовые отношения</th>
+            <th scope="col"></th>
+          </tr>
         </thead>
         <tbody>
-        {recipient.recipients.map((recipient) =>
-          <tr key={recipient.id}>
-            <td>{recipient.id}</td>
-            <td>{recipient.last_name}</td>
-            <td>{recipient.first_name}</td>
-            <td>{recipient.sur_name}</td>
-            <td>{recipient.phone}</td>
-            <td>{recipient.position}</td>
-            <td>{recipient.department}</td>
-            <td>{recipient.state}</td>
-            <td>
-              <Button variant="outline-light btn-edit_del success me-2"
-                onClick={() => handleEdit(recipient.id)}
-              ><EditSVG/>
-              </Button>
-              <Button variant="outline-light btn-edit_del danger"
-                onClick={() => handleDelete(recipient.id)}
-              ><DeleteSVG/>
-              </Button>
-            </td>
-          </tr>
-        )}
+          {recipient.recipients.map(recipient => (
+            <tr key={recipient.id}>
+              <td>{recipient.id}</td>
+              <td>{recipient.last_name}</td>
+              <td>{recipient.first_name}</td>
+              <td>{recipient.sur_name}</td>
+              <td>{recipient.phone}</td>
+              <td>{recipient.position}</td>
+              <td>{recipient.department}</td>
+              <td>{recipient.state}</td>
+              <td>
+                <div className={"btn-group"}>
+                  <Button
+                    variant="outline-light me-1"
+                    className={"btn-edit_del success"}
+                    onClick={() => handleEdit(recipient.id)}
+                  >
+                    <EditSVG />
+                  </Button>
+                  <Button
+                    variant="outline-light"
+                    className={"btn-edit_del danger"}
+                    onClick={() => handleDelete(recipient.id)}
+                  >
+                    <DeleteSVG />
+                  </Button>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
         <tfoot></tfoot>
       </table>
     </div>
   );
-}
+});
 
 export default RenderListRecipient;
-
-// variant="danger"
-// variant="utline-light"
-// variant="success me-2"
-// variant="outline-success me-2"

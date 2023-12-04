@@ -5,67 +5,60 @@ import InputSelect from "../UI/InputSelect";
 // import { AutoComplete } from "primereact/autocomplete";
 import { Button } from "react-bootstrap";
 import { createRecipient } from "../../http/repicientAPI";
-import { createDepartment } from "../../http/departmentAPI";
 
 const FormCreateRecipient = () => {
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
   const [position, setPosition] = useState("");
-  const [department, setDepartment] = useState("Дирекция");
+  const [department, setDepartment] = useState("");
   const [state, setState] = useState("Штатный сотрудник");
   const [phone, setPhone] = useState("");
 
   // const [value, setValue] = useState("");
   // const [items, setItems] = useState([]);
 
-//   const addRecipient = () => {
-//   createDepartment({name: department})
-// }
-
-  // const addRecipient = () => {
-  //   const formData = new FormData();
-  //   formData.append("last_name", lastName);
-  //   formData.append("first_name", firstName);
-  //   formData.append("sur_name", surName);
-  //   formData.append("position", position);
-  //   // formData.append("departmentId", department);
-  //   formData.append("state", state);
-  //   formData.append("phone", phone);
-  //   createRecipient(formData).then(() => {
-  //     setLastName("");
-  //     setFirstName("");
-  //     setSurName("");
-  //     setPosition("");
-  //     setDepartment("");
-  //     setState("Штатный сотрудник");
-  //     setPhone("");
-  //   });
-  // };
+  //   const addRecipient = () => {
+  //   createDepartment({name: department})
+  // }
 
   const addRecipient = () => {
-    createDepartment({
-      name: department
-    }).then(() => {
-      setDepartment("");
-    });
-    // createRecipient({
-    //   last_name: lastName,
-    //   first_name: firstName,
-    //   sur_name: surName,
-    //   position: position,
-    //   state: state,
-    //   phone: phone
-    // })
-    //   .then(() => {
-    //   setLastName("");
-    //   setFirstName("");
-    //   setSurName("");
-    //   setPosition("");
-    //   setState("Штатный сотрудник");
-    //   setPhone("");
-    // });
+    //   const formData = new FormData();
+    //   formData.append("last_name", lastName);
+    //   formData.append("first_name", firstName);
+    //   formData.append("sur_name", surName);
+    //   formData.append("position", position);
+    //   // formData.append("departmentId", department);
+    //   formData.append("state", state);
+    //   formData.append("phone", phone);
+    //   createRecipient(formData).then(() => {
+    //     setLastName("");
+    //     setFirstName("");
+    //     setSurName("");
+    //     setPosition("");
+    //     setDepartment("");
+    //     setState("Штатный сотрудник");
+    //     setPhone("");
+    //   });
+    // };
 
+    createRecipient({
+      last_name: lastName,
+      first_name: firstName,
+      sur_name: surName,
+      position: position,
+      department: department,
+      state: state,
+      phone: phone
+    }).then(() => {
+      setLastName("");
+      setFirstName("");
+      setSurName("");
+      setPosition("");
+      setDepartment("");
+      setState("Штатный сотрудник");
+      setPhone("");
+    });
   };
 
   // const items = ['Тех дир', 'Инфо дир', 'Спец дир']
