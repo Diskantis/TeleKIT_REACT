@@ -27,6 +27,35 @@
 .input_create_department {
   width: 500px;
 }
+.search_form {
+  position: relative;
+}
+.autocomplete {
+  width: 100%;
+  max-height: 110px;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  color: $color-table_input_label-text;
+  @include font($size: 1rem, $height: 1.5);
+  text-overflow: ellipsis;
+  background-color: $color-input-create-bg;
+  border: 1px solid $color-table_input-border;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0;
+  list-style: none;
+  z-index: 100;
+}
+.autocomplete_item {
+  padding: 0 0.75rem;
+  &:hover {
+    background-color: $color-table_input-border;
+    cursor: pointer;
+    transition: cubic-bezier(1, 0, 0, 1) 0.3s all;
+  }
+}
 
 .input_create_phone {
   width: 200px;

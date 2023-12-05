@@ -1,26 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
-// import { AutoComplete } from "primereact/autocomplete";
 import { Button } from "react-bootstrap";
-import { createRecipient } from "../../http/repicientAPI";
 
-const FormCreateRecipient = () => {
+import { createRecipient, fetchRecipients } from "../../http/repicientAPI";
+// import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
+import InputSelectAutocomplete from "../UI/InputAutocomplete";
+
+const FormCreateRecipient = observer(() => {
+  // const { recipient } = useContext(Context);
+
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
   const [position, setPosition] = useState("");
   const [department, setDepartment] = useState("");
+  const [departments, setDepartments] = useState([]);
   const [state, setState] = useState("Штатный сотрудник");
   const [phone, setPhone] = useState("");
 
-  // const [value, setValue] = useState("");
-  // const [items, setItems] = useState([]);
+  const getDepartment = () => {
+    fetchRecipients().then(data => {
+      setDepartments(data);
+    });
+  };
+  useEffect(() => {
+    getDepartment();
+  }, []);
 
-  //   const addRecipient = () => {
-  //   createDepartment({name: department})
-  // }
+  const filteredDepartment = departments.filter(depart => {
+    return depart.department.toLowerCase().includes(department.toLowerCase());
+  });
 
   const addRecipient = () => {
     //   const formData = new FormData();
@@ -61,13 +73,6 @@ const FormCreateRecipient = () => {
     });
   };
 
-  // const items = ['Тех дир', 'Инфо дир', 'Спец дир']
-
-  // const search = (event) => {
-  //   let _items = [...Array(10).keys()];
-  //   setItems(event.query ? [...Array(10).keys()].map(item => event.query + "-" + item) : _items);
-  // };
-
   return (
     <div className={"form_recipient"}>
       <div className={"form_recipient_title"}>
@@ -100,7 +105,7 @@ const FormCreateRecipient = () => {
           value={phone}
           className={"input_create_phone"}
           placeholder={"+375"}
-          maxlength={"17"}
+          maxLength={"13"}
           onChange={e => setPhone(e.target.value)}
         >
           Телефон
@@ -114,21 +119,21 @@ const FormCreateRecipient = () => {
         >
           Должность
         </InputCreate>
-        {/*<AutoComplete*/}
+        {/*<InputCreate*/}
         {/*  className={"input_create_department"}*/}
-        {/*  value={value}*/}
-        {/*  suggestions={items}*/}
-        {/*  completeMethod={search}*/}
-        {/*  onChange={(e) => setValue(e.value)}*/}
-        {/*  dropdown*/}
-        {/*/>*/}
-        <InputCreate
+        {/*  value={department}*/}
+        {/*  onChange={e => setDepartment(e.target.value)}*/}
+        {/*>*/}
+        {/*  Дирекция*/}
+        {/*</InputCreate>*/}
+        <InputSelectAutocomplete
           className={"input_create_department"}
+          options={filteredDepartment}
           value={department}
           onChange={e => setDepartment(e.target.value)}
         >
           Дирекция
-        </InputCreate>
+        </InputSelectAutocomplete>
         <InputSelect
           defaultValue={state}
           className={"select-state"}
@@ -146,6 +151,6 @@ const FormCreateRecipient = () => {
       </Button>
     </div>
   );
-};
+});
 
 export default FormCreateRecipient;

@@ -1,20 +1,33 @@
-import React, { useState } from "react";
-import { AutoComplete } from "primereact/autocomplete";
+import React from "react";
 
-const DropdownDemo = () => {
-  const [value, setValue] = useState('');
-  const [items, setItems] = useState([]);
-
-  const search = (event) => {
-    let _items = [...Array(10).keys()];
-    setItems(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items);
-  }
-
+const InputSelectAutocomplete = ({
+  children,
+  value,
+  options,
+  className,
+  ...props
+}) => {
   return (
-    <div className="card flex justify-content-center">
-      <AutoComplete value={value} suggestions={items} completeMethod={search} onChange={(e) => setValue(e.value)} dropdown />
+    <div className="form">
+      <form className="search_form">
+        <label className={"label-create"}>{children}</label>
+        <input
+          type="text"
+          value={value}
+          placeholder="search department"
+          className={`input-create ${className}`}
+          {...props}
+        />
+        <ul className="autocomplete">
+          {options.map(depart => (
+            <li className="autocomplete_item" key={depart.id}>
+              {depart.department}
+            </li>
+          ))}
+        </ul>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default DropdownDemo;
+export default InputSelectAutocomplete;
