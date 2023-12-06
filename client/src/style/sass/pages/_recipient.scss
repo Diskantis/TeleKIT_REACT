@@ -39,17 +39,15 @@
   left: 0;
   top: 70px;
   color: $color-table_input_label-text;
-  @include font($size: 1rem, $height: 1.5);
+  @include font($size: 1rem);
   text-overflow: ellipsis;
   background-color: $color-input-create-bg;
-  border: 1px solid $color-table_input-border;
   border-radius: 0.375rem;
-  padding: 0.375rem 0;
   list-style: none;
   z-index: 100;
 }
 .autocomplete_item {
-  padding: 0 0.75rem;
+  padding: 5px 0.75rem;
   &:hover {
     background-color: $color-table_input-border;
     cursor: pointer;

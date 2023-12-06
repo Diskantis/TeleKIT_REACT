@@ -34,6 +34,10 @@ const FormCreateRecipient = observer(() => {
     return depart.department.toLowerCase().includes(department.toLowerCase());
   });
 
+  const selectDepartment = depart => {
+    setDepartment(depart);
+  };
+
   const addRecipient = () => {
     //   const formData = new FormData();
     //   formData.append("last_name", lastName);
@@ -119,18 +123,10 @@ const FormCreateRecipient = observer(() => {
         >
           Должность
         </InputCreate>
-        {/*<InputCreate*/}
-        {/*  className={"input_create_department"}*/}
-        {/*  value={department}*/}
-        {/*  onChange={e => setDepartment(e.target.value)}*/}
-        {/*>*/}
-        {/*  Дирекция*/}
-        {/*</InputCreate>*/}
         <InputSelectAutocomplete
           className={"input_create_department"}
           options={filteredDepartment}
-          value={department}
-          onChange={e => setDepartment(e.target.value)}
+          create={selectDepartment}
         >
           Дирекция
         </InputSelectAutocomplete>
