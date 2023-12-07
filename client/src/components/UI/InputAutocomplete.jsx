@@ -1,56 +1,79 @@
 import React, { useState } from "react";
 
-const InputSelectAutocomplete = ({
-  children,
-  options,
-  className,
-  create,
-  ...props
-}) => {
-  const [value, setValue] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
+const InputSelectAutocomplete = ({ children, create, className, ...props }) => {
+  const [active, setActive] = useState(0);
+  const [filtered, setFiltered] = useState([]);
+  const [isShow, setIsShow] = useState(false);
+  const [input, setInput] = useState("");
 
-  const itemClickHandler = e => {
-    setValue(e.target.textContent);
-    setIsOpen(false);
+  create(input);
+
+  const onChange = e => {
+    const { suggestions } = props;
+    const input = e.currentTarget.value;
+    const newFilteredSuggestions = suggestions.filter(
+      suggestion => suggestion.toLowerCase().indexOf(input.toLowerCase()) > -1
+    );
+    setActive(0);
+    setFiltered(newFilteredSuggestions);
+    setIsShow(true);
+    setInput(e.currentTarget.value);
   };
-
-  create(value);
-
-  const arr_depart = Array.from(
-    new Set(options.map(depart => depart.department))
-  );
-  console.log(arr_depart);
-
-  const inputClickHandler = () => {
-    setIsOpen(true);
+  const onClick = e => {
+    setActive(0);
+    setFiltered([]);
+    setIsShow(false);
+    setInput(e.currentTarget.innerText);
   };
-
+  const onKeyDown = e => {
+    if (e.keyCode === 13) {
+      // enter key
+      e.preventDefault();
+      setActive(0);
+      setIsShow(false);
+      setInput(filtered[active]);
+    } else if (e.keyCode === 38) {
+      // up arrow
+      return active === 0 ? null : setActive(active - 1);
+    } else if (e.keyCode === 40) {
+      // down arrow
+      return active - 1 === filtered.length ? null : setActive(active + 1);
+    }
+  };
+  const renderAutocomplete = () => {
+    if (isShow && input) {
+      if (filtered.length) {
+        return (
+          <ul className="autocomplete">
+            {filtered.map((suggestion, index) => {
+              let className;
+              if (index === active) {
+                className = "active";
+              }
+              return (
+                <li className={className} key={suggestion} onClick={onClick}>
+                  {suggestion}
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+    }
+    return <></>;
+  };
   return (
     <div className="form">
       <form className="search_form">
         <label className={"label-create"}>{children}</label>
         <input
-          type="text"
-          value={value}
           className={`input-create ${className}`}
-          onChange={e => setValue(e.target.value)}
-          onClick={inputClickHandler}
-          {...props}
+          type="text"
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          value={input}
         />
-        <ul className="autocomplete">
-          {value && isOpen
-            ? arr_depart.map(depart => (
-                <li
-                  className="autocomplete_item"
-                  key={depart.id}
-                  onClick={itemClickHandler}
-                >
-                  {depart}
-                </li>
-              ))
-            : null}
-        </ul>
+        {renderAutocomplete()}
       </form>
     </div>
   );

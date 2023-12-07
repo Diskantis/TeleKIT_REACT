@@ -2,16 +2,13 @@ import { useEffect, useState } from "react";
 
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
+import InputSelectAutocomplete from "../UI/InputAutocomplete";
 import { Button } from "react-bootstrap";
 
 import { createRecipient, fetchRecipients } from "../../http/repicientAPI";
-// import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
-import InputSelectAutocomplete from "../UI/InputAutocomplete";
 
 const FormCreateRecipient = observer(() => {
-  // const { recipient } = useContext(Context);
-
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surName, setSurName] = useState("");
@@ -34,30 +31,15 @@ const FormCreateRecipient = observer(() => {
     return depart.department.toLowerCase().includes(department.toLowerCase());
   });
 
+  const arr_depart = Array.from(
+    new Set(filteredDepartment.map(depart => depart.department))
+  );
+
   const selectDepartment = depart => {
     setDepartment(depart);
   };
 
   const addRecipient = () => {
-    //   const formData = new FormData();
-    //   formData.append("last_name", lastName);
-    //   formData.append("first_name", firstName);
-    //   formData.append("sur_name", surName);
-    //   formData.append("position", position);
-    //   // formData.append("departmentId", department);
-    //   formData.append("state", state);
-    //   formData.append("phone", phone);
-    //   createRecipient(formData).then(() => {
-    //     setLastName("");
-    //     setFirstName("");
-    //     setSurName("");
-    //     setPosition("");
-    //     setDepartment("");
-    //     setState("Штатный сотрудник");
-    //     setPhone("");
-    //   });
-    // };
-
     createRecipient({
       last_name: lastName,
       first_name: firstName,
@@ -125,7 +107,7 @@ const FormCreateRecipient = observer(() => {
         </InputCreate>
         <InputSelectAutocomplete
           className={"input_create_department"}
-          options={filteredDepartment}
+          suggestions={arr_depart}
           create={selectDepartment}
         >
           Дирекция

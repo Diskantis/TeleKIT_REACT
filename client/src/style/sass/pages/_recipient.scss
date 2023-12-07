@@ -24,15 +24,26 @@
   width: 420px;
 }
 
+.input_create_phone {
+  width: 200px;
+}
+
+.form_create_button {
+  width: 150px;
+  margin-top: 20px;
+}
+
 .input_create_department {
   width: 500px;
 }
+
 .search_form {
   position: relative;
 }
+
 .autocomplete {
   width: 100%;
-  max-height: 110px;
+  max-height: 94px;
   height: auto;
   overflow: auto;
   position: absolute;
@@ -42,24 +53,34 @@
   @include font($size: 1rem);
   text-overflow: ellipsis;
   background-color: $color-input-create-bg;
-  border-radius: 0.375rem;
+  border: 1px solid $color-table_input-border;
+  border-radius: 6px;
   list-style: none;
+  overflow-y: scroll;
   z-index: 100;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 0 0.375rem 0.375rem 0;
+    background-color: $color-input-create-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #818181;
+  }
 }
-.autocomplete_item {
+
+.autocomplete li {
   padding: 5px 0.75rem;
   &:hover {
     background-color: $color-table_input-border;
     cursor: pointer;
-    transition: cubic-bezier(1, 0, 0, 1) 0.3s all;
+    transition: cubic-bezier(1, 0, 0, 1) 0.2s all;
   }
 }
 
-.input_create_phone {
-  width: 200px;
-}
-
-.form_create_button {
-  width: 150px;
-  margin-top: 20px;
+.autocomplete > .active {
+  padding: 5px 0.75rem;
+  background-color: $color-table_input-border;
 }
