@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
-import InputSelectAutocomplete from "../UI/InputAutocomplete";
+// import InputSelectAutocomplete from "../UI/InputAutocomplete";
 import { Button } from "react-bootstrap";
 
 import { createRecipient, fetchRecipients } from "../../http/repicientAPI";
 import { observer } from "mobx-react-lite";
+import * as React from "react";
+import { Autocomplete } from "../UI/autocomplete";
 
 const FormCreateRecipient = observer(() => {
   const [lastName, setLastName] = useState("");
@@ -35,9 +37,9 @@ const FormCreateRecipient = observer(() => {
     new Set(filteredDepartment.map(depart => depart.department))
   );
 
-  const selectDepartment = depart => {
-    setDepartment(depart);
-  };
+  // const selectDepartment = depart => {
+  //   setDepartment(depart);
+  // };
 
   const addRecipient = () => {
     createRecipient({
@@ -105,13 +107,14 @@ const FormCreateRecipient = observer(() => {
         >
           Должность
         </InputCreate>
-        <InputSelectAutocomplete
-          className={"input_create_department"}
-          suggestions={arr_depart}
-          create={selectDepartment}
-        >
-          Дирекция
-        </InputSelectAutocomplete>
+        <Autocomplete options={arr_depart} />
+        {/*<InputSelectAutocomplete*/}
+        {/*  className={"input_create_department"}*/}
+        {/*  suggestions={arr_depart}*/}
+        {/*  create={selectDepartment}*/}
+        {/*>*/}
+        {/*  Дирекция*/}
+        {/*</InputSelectAutocomplete>*/}
         <InputSelect
           defaultValue={state}
           className={"select-state"}

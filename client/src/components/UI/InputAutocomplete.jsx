@@ -1,3 +1,11 @@
+// <InputSelectAutocomplete
+//   className={"input_create_department"}
+//   suggestions={arr_depart}
+//   create={selectDepartment}
+// >
+//   Дирекция
+// </InputSelectAutocomplete>
+
 import React, { useState } from "react";
 
 const InputSelectAutocomplete = ({ children, create, className, ...props }) => {
@@ -34,9 +42,11 @@ const InputSelectAutocomplete = ({ children, create, className, ...props }) => {
       setInput(filtered[active]);
     } else if (e.keyCode === 38) {
       // up arrow
+      console.log(active, filtered.length);
       return active === 0 ? null : setActive(active - 1);
     } else if (e.keyCode === 40) {
       // down arrow
+      console.log(active, filtered.length);
       return active - 1 === filtered.length ? null : setActive(active + 1);
     }
   };
