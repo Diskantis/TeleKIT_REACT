@@ -24,53 +24,72 @@ const grey = {
   900: "#1C2025"
 };
 
+const color_const = {
+  color_text: "#ffffff",
+  color_input_bg: "#212529",
+  color_input_border: "#495057",
+  color_input_shadow: "#003a6e",
+  color_label_text: "#adb5bd"
+};
+
+export const StyledAutocomplete = styled("div")`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const StyledAutocompleteRoot = styled("div")(
   ({ theme }) => `
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
   font-weight: 400;
-  border-radius: 8px;
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[500]};
-  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  box-shadow: 0px 2px 4px ${
-    theme.palette.mode === "dark" ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.05)"
-  };
+  border-radius: 0.375rem;
+  color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+  background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
+  border: 1px solid ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+
+  width: 500px;
+  height: 38px;
   display: flex;
   gap: 5px;
-  padding-right: 5px;
+  padding: 0.375rem 0.75rem;
   overflow: hidden;
-  width: 320px;
+  // text-overflow: ellipsis;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 
   &.focused {
-    border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${
-      theme.palette.mode === "dark" ? blue[700] : blue[200]
-    };
-  }
-
-  &:hover {
-    background: ${theme.palette.mode === "dark" ? grey[800] : grey[50]};
-    border-color: ${theme.palette.mode === "dark" ? grey[600] : grey[300]};
+    outline: none;
+    border: 1px solid  ${color_const["color_label_text"]};
+    box-shadow: 0 0 0 3px ${theme.palette.mode === "dark"
+    ? color_const["color_input_shadow"]
+    : color_const["color_input_shadow"]};
   }
 
   &:focus-visible {
-    outline: 0;
+    outline: none;
   }
 `
 );
 
+export const StyledLabel = styled("label")`
+  font-size: inherit;
+  font-family: inherit;
+  color: ${color_const["color_label_text"]};
+  margin-bottom: 0.3rem;
+`;
+
 export const StyledInput = styled("input")(
   ({ theme }) => `
-  font-size: 0.875rem;
+  font-size: inherit;
   font-family: inherit;
   font-weight: 400;
   line-height: 1.5;
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
+  color: ${theme.palette.mode === "dark" ? color_const["color_label_text"] : color_const["color_label_text"]};
   background: inherit;
   border: none;
   border-radius: inherit;
-  padding: 8px 12px;
-  outline: 0;
+  // padding: 8px 12px;
+  outline: none;
   flex: 1 0 auto;
 `
 );
@@ -79,36 +98,41 @@ export const StyledInput = styled("input")(
 export const StyledPopper = styled("div")`
   position: relative;
   z-index: 1001;
-  width: 320px;
+  width: 500px;
 `;
 
-export const StyledListbox = styled("ul")(
+export const StyledListBox = styled("ul")(
   ({ theme }) => `
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.875rem;
+  // font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
   box-sizing: border-box;
   padding: 6px;
   margin: 12px 0;
-  min-width: 320px;
-  border-radius: 12px;
+  min-width: 500px;
+  border-radius: 6px;
   overflow: auto;
   outline: 0px;
   max-height: 300px;
   z-index: 1;
-  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  box-shadow: 0px 4px 6px ${
-    theme.palette.mode === "dark" ? "rgba(0,0,0, 0.3)" : "rgba(0,0,0, 0.05)"
-  };
+  color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+  background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
+  border: 1px solid ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+  // background: inherit;
+  // border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
+  // color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   `
 );
+
+// box-shadow: 0px 4px 6px ${
+//     theme.palette.mode === "dark" ? "rgba(0,0,0, 0.3)" : "rgba(0,0,0, 0.05)"
+//   };
 
 export const StyledOption = styled("li")(
   ({ theme }) => `
   list-style: none;
   padding: 8px;
-  border-radius: 8px;
+  // padding: 5px 0.75rem;
+  border-radius: 4px;
   cursor: default;
 
   &:last-of-type {
@@ -120,26 +144,27 @@ export const StyledOption = styled("li")(
   }
 
   &[aria-selected=true] {
-    background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
+    background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
+    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+    // color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]}
+    // background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
+;
   }
 
   &.Mui-focused,
   &.Mui-focusVisible {
-    background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  }
-
-  &.Mui-focusVisible {
-    box-shadow: 0 0 0 3px ${
-      theme.palette.mode === "dark" ? blue[500] : blue[200]
-    };
+    background: ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+    // background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
+    // color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   }
 
   &[aria-selected=true].Mui-focused,
   &[aria-selected=true].Mui-focusVisible {
-    background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
+    background: ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+    // background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
+    // color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
   }
   `
 );
@@ -156,8 +181,8 @@ export const StyledPopupIndicator = styled(Button)(
 
     &:hover {
       background-color: ${
-        theme.palette.mode === "dark" ? grey[700] : blue[100]
-      };
+    theme.palette.mode === "dark" ? grey[700] : blue[100]
+  };
       cursor: pointer;
     }
 
@@ -183,8 +208,8 @@ export const StyledClearIndicator = styled(Button)(
 
     &:hover {
       background-color: ${
-        theme.palette.mode === "dark" ? grey[700] : blue[100]
-      };
+    theme.palette.mode === "dark" ? grey[700] : blue[100]
+  };
       cursor: pointer;
     }
 

@@ -1,37 +1,41 @@
-import * as React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import { useAutocomplete } from "@mui/base/useAutocomplete";
-import { Popper } from "@mui/base/Popper";
 import { unstable_useForkRef as useForkRef } from "@mui/utils";
+import { Popper } from "@mui/base/Popper";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ClearIcon from "@mui/icons-material/Clear";
+
 import {
   StyledAutocompleteRoot,
-  StyledClearIndicator,
+  StyledLabel,
   StyledInput,
-  StyledListbox,
+  StyledListBox,
   StyledNoOptions,
   StyledOption,
   StyledPopper,
-  StyledPopupIndicator
+  StyledPopupIndicator, StyledAutocomplete
 } from "../../style/modules/autocomplete.module";
 
 export const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
-  const {
+   const {
     disableClearable = false,
     disabled = false,
     readOnly = false,
+    options,
+    create,
+    children,
     ...other
   } = props;
+
+  const [value, setValue] = useState(options[0]);
+  const [inputValue, setInputValue] = useState('');
 
   const {
     getRootProps,
     getInputProps,
     getPopupIndicatorProps,
-    getClearProps,
     getListboxProps,
     getOptionProps,
-    dirty,
     id,
     popupOpen,
     focused,
@@ -39,16 +43,20 @@ export const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
     setAnchorEl,
     groupedOptions
   } = useAutocomplete({
-    ...props,
-    componentName: "BaseAutocompleteIntroduction"
+    id: 'autocomplete-department',
+    options,
+    onChange: (event, newValue) => setValue(newValue),
+    onInputChange: (event, newInputValue) => setInputValue(newInputValue),
+    ...props
   });
 
-  const hasClearIcon = !disableClearable && !disabled && dirty && !readOnly;
+  create(inputValue);
 
   const rootRef = useForkRef(ref, setAnchorEl);
 
   return (
-    <React.Fragment>
+    <StyledAutocomplete>
+      <StyledLabel>{children}</StyledLabel>
       <StyledAutocompleteRoot
         {...getRootProps(other)}
         ref={rootRef}
@@ -60,12 +68,6 @@ export const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
           readOnly={readOnly}
           {...getInputProps()}
         />
-        {hasClearIcon && (
-          <StyledClearIndicator {...getClearProps()}>
-            <ClearIcon />
-          </StyledClearIndicator>
-        )}
-
         <StyledPopupIndicator
           {...getPopupIndicatorProps()}
           className={popupOpen ? "popupOpen" : undefined}
@@ -85,39 +87,27 @@ export const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
             { name: "preventOverflow", enabled: false }
           ]}
         >
-          <StyledListbox {...getListboxProps()}>
+          <StyledListBox {...getListboxProps()}>
             {groupedOptions.map((option, index) => {
               const optionProps = getOptionProps({ option, index });
 
               return (
-                <StyledOption {...optionProps}>{option.label}</StyledOption>
+                <StyledOption {...optionProps}>{option}</StyledOption>
               );
             })}
 
             {groupedOptions.length === 0 && (
               <StyledNoOptions>No results</StyledNoOptions>
             )}
-          </StyledListbox>
+          </StyledListBox>
         </Popper>
       ) : null}
-    </React.Fragment>
+    </StyledAutocomplete>
   );
 });
 
 Autocomplete.propTypes = {
-  /**
-   * If `true`, the input can't be cleared.
-   * @default false
-   */
   disableClearable: PropTypes.oneOf([false]),
-  /**
-   * If `true`, the component is disabled.
-   * @default false
-   */
   disabled: PropTypes.bool,
-  /**
-   * If `true`, the component becomes readonly. It is also supported for multiple tags where the tag cannot be deleted.
-   * @default false
-   */
   readOnly: PropTypes.bool
 };
