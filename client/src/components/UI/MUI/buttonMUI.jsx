@@ -5,11 +5,11 @@ import { styled } from "@mui/system";
 const Button_mui = styled(Button)(
   `
     width: 150px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-top: 10px
   `
 );
 
-export default function ButtonMUI({ children }) {
-  return <Button_mui variant="contained">{children}</Button_mui>;
+export default function ButtonMUI({ children, click }) {
+  return <Button_mui variant="contained" onClick={click}>{children}</Button_mui>;
 }

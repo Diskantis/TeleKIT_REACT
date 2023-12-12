@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
 // import ButtonMUI from "../UI/MUI/buttonMUI";
-import AutocompleteStyleMUI from "../UI/autocomplete/autocomplete";
+// import AutocompleteStyleMUI from "../UI/autocomplete/autocomplete";
 
 import { createRecipient, fetchRecipients } from "../../http/repicientAPI";
 import { observer } from "mobx-react-lite";
 
 // import InputSelectAutocomplete from "../UI/InputAutocomplete";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
+import InputSelectAutocomplete from "../UI/autocomplete/InputAutocomplete";
+import ButtonMUI from "../UI/MUI/buttonMUI";
 // import ComboBox from "../UI/MUI/autocompleteMUI";
 // import AutocompleteIntroduction from "../UI/MUI/autocompleteMUI";
 // import ManageableStates from "../UI/MUI/autocompleteMUI";
@@ -42,8 +44,11 @@ const FormCreateRecipient = observer(() => {
     new Set(filteredDepartment.map(depart => depart.department))
   );
 
+  const selectDepartment = depart => {
+    setDepartment(depart);
+  };
+
   const addRecipient = () => {
-    console.log("Record");
     createRecipient({
       last_name: lastName,
       first_name: firstName,
@@ -118,15 +123,22 @@ const FormCreateRecipient = observer(() => {
         >
           Должность
         </InputCreate>
-        <AutocompleteStyleMUI
-          options={arr_depart}
-          inputValue={department}
-          onInputChange={(event, newInputValue) => {
-            setDepartment(newInputValue);
-          }}
+        <InputSelectAutocomplete
+          className={"input_create_department"}
+          suggestions={arr_depart}
+          create={selectDepartment}
         >
           Дирекция
-        </AutocompleteStyleMUI>
+        </InputSelectAutocomplete>
+        {/*<AutocompleteStyleMUI*/}
+        {/*  options={arr_depart}*/}
+        {/*  inputValue={department}*/}
+        {/*  onInputChange={(event, newInputValue) => {*/}
+        {/*    setDepartment(newInputValue);*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Дирекция*/}
+        {/*</AutocompleteStyleMUI>*/}
         <InputSelect
           defaultValue={state}
           className={"select-state"}
@@ -139,7 +151,7 @@ const FormCreateRecipient = observer(() => {
           Трудовые отношения
         </InputSelect>
       </div>
-      <Button onClick={addRecipient}>Добавить</Button>
+      <ButtonMUI click={addRecipient}>Добавить</ButtonMUI>
     </div>
   );
 });
