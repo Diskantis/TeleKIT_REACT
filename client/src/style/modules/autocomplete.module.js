@@ -35,6 +35,7 @@ const color_const = {
 export const StyledAutocomplete = styled("div")`
   display: flex;
   flex-direction: column;
+  //margin-bottom: 24px;
 `;
 
 export const StyledAutocompleteRoot = styled("div")(
@@ -42,9 +43,21 @@ export const StyledAutocompleteRoot = styled("div")(
   font-size: 1rem;
   font-weight: 400;
   border-radius: 0.375rem;
-  color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
-  background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
-  border: 1px solid ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+  color: ${
+    theme.palette.mode === "dark"
+      ? color_const["color_text"]
+      : color_const["color_text"]
+  };
+  background: ${
+    theme.palette.mode === "dark"
+      ? color_const["color_input_bg"]
+      : color_const["color_input_bg"]
+  };
+  border: 1px solid ${
+    theme.palette.mode === "dark"
+      ? color_const["color_input_border"]
+      : color_const["color_input_border"]
+  };
 
   width: 500px;
   height: 38px;
@@ -60,9 +73,11 @@ export const StyledAutocompleteRoot = styled("div")(
   &.focused {
     outline: none;
     border: 1px solid  ${color_const["color_label_text"]};
-    box-shadow: 0 0 0 3px ${theme.palette.mode === "dark"
-    ? color_const["color_input_shadow"]
-    : color_const["color_input_shadow"]};
+    box-shadow: 0 0 0 3px ${
+      theme.palette.mode === "dark"
+        ? color_const["color_input_shadow"]
+        : color_const["color_input_shadow"]
+    };
   }
 
   &:focus-visible {
@@ -84,7 +99,11 @@ export const StyledInput = styled("input")(
   font-family: inherit;
   font-weight: 400;
   line-height: 1.5;
-  color: ${theme.palette.mode === "dark" ? color_const["color_label_text"] : color_const["color_label_text"]};
+  color: ${
+    theme.palette.mode === "dark"
+      ? color_const["color_label_text"]
+      : color_const["color_label_text"]
+  };
   background: inherit;
   border: none;
   border-radius: inherit;
@@ -114,9 +133,21 @@ export const StyledListBox = styled("ul")(
   outline: 0px;
   max-height: 300px;
   z-index: 1;
-  color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
-  background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
-  border: 1px solid ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
+  color: ${
+    theme.palette.mode === "dark"
+      ? color_const["color_text"]
+      : color_const["color_text"]
+  };
+  background: ${
+    theme.palette.mode === "dark"
+      ? color_const["color_input_bg"]
+      : color_const["color_input_bg"]
+  };
+  border: 1px solid ${
+    theme.palette.mode === "dark"
+      ? color_const["color_input_border"]
+      : color_const["color_input_border"]
+  };
   // background: inherit;
   // border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
   // color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
@@ -144,26 +175,56 @@ export const StyledOption = styled("li")(
   }
 
   &[aria-selected=true] {
-    background: ${theme.palette.mode === "dark" ? color_const["color_input_bg"] : color_const["color_input_bg"]};
-    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
+    background: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_input_bg"]
+        : color_const["color_input_bg"]
+    };
+    color: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_text"]
+        : color_const["color_text"]
+    };
     // color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]}
-    // background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
+    // background-color: ${
+      theme.palette.mode === "dark" ? blue[900] : blue[100]
+    };
 ;
   }
 
   &.Mui-focused,
   &.Mui-focusVisible {
-    background: ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
-    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
-    // background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
+    background: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_input_border"]
+        : color_const["color_input_border"]
+    };
+    color: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_text"]
+        : color_const["color_text"]
+    };
+    // background-color: ${
+      theme.palette.mode === "dark" ? grey[800] : grey[100]
+    };
     // color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
   }
 
   &[aria-selected=true].Mui-focused,
   &[aria-selected=true].Mui-focusVisible {
-    background: ${theme.palette.mode === "dark" ? color_const["color_input_border"] : color_const["color_input_border"]};
-    color: ${theme.palette.mode === "dark" ? color_const["color_text"] : color_const["color_text"]};
-    // background-color: ${theme.palette.mode === "dark" ? blue[900] : blue[100]};
+    background: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_input_border"]
+        : color_const["color_input_border"]
+    };
+    color: ${
+      theme.palette.mode === "dark"
+        ? color_const["color_text"]
+        : color_const["color_text"]
+    };
+    // background-color: ${
+      theme.palette.mode === "dark" ? blue[900] : blue[100]
+    };
     // color: ${theme.palette.mode === "dark" ? blue[100] : blue[900]};
   }
   `
@@ -181,8 +242,8 @@ export const StyledPopupIndicator = styled(Button)(
 
     &:hover {
       background-color: ${
-    theme.palette.mode === "dark" ? grey[700] : blue[100]
-  };
+        theme.palette.mode === "dark" ? grey[700] : blue[100]
+      };
       cursor: pointer;
     }
 
@@ -208,8 +269,8 @@ export const StyledClearIndicator = styled(Button)(
 
     &:hover {
       background-color: ${
-    theme.palette.mode === "dark" ? grey[700] : blue[100]
-  };
+        theme.palette.mode === "dark" ? grey[700] : blue[100]
+      };
       cursor: pointer;
     }
 

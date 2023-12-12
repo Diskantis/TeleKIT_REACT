@@ -7,12 +7,12 @@ import {
   StyledAutocompleteRoot,
   StyledInput,
   StyledListbox,
-  StyledOption,
-} from "../../style/modules/autocomplete_hook.module";
+  StyledOption
+} from "../../../style/modules/autocomplete_hook.module";
 
-export default function UseAutocomplete({ children, create, options}) {
+export default function UseAutocomplete({ children, create, options }) {
   const [value, setValue] = useState(options[0]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const {
     getRootProps,
@@ -21,14 +21,14 @@ export default function UseAutocomplete({ children, create, options}) {
     getListboxProps,
     getOptionProps,
     groupedOptions,
-    focused,
+    focused
   } = useAutocomplete({
     options,
     value,
     inputValue,
     onChange: (event, newValue) => setValue(newValue),
     onInputChange: (event, newInputValue) => setInputValue(newInputValue),
-    id: 'use-autocomplete-demo',
+    id: "use-autocomplete-demo"
   });
 
   create(inputValue);
@@ -38,7 +38,7 @@ export default function UseAutocomplete({ children, create, options}) {
       <StyledLabel {...getInputLabelProps()}>{children}</StyledLabel>
       <StyledAutocompleteRoot
         {...getRootProps()}
-        className={focused ? 'focused' : ''}
+        className={focused ? "focused" : ""}
       >
         <StyledInput {...getInputProps()} />
       </StyledAutocompleteRoot>
