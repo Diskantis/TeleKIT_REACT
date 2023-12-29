@@ -26,12 +26,10 @@ const RenderListRecipient = observer(() => {
 
   const handleEdit = recipientId => {
     console.log(recipientId);
-    // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
   };
 
   const handleDelete = recipientId => {
     console.log(recipientId);
-    // setRecipients(recipients.filter((user) => recipient.id !== recipientId));
   };
 
   return (
@@ -39,54 +37,56 @@ const RenderListRecipient = observer(() => {
       <div className={"form_recipient_title"}>
         Список получателей оборудования
       </div>
-      <table className={"table"}>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Отчество</th>
-            <th scope="col">Телефон</th>
-            <th scope="col">Должность</th>
-            <th scope="col">Дирекция</th>
-            <th scope="col">Трудовые отношения</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {recipient.recipients.map(recipient => (
-            <tr key={recipient.id}>
-              <td>{recipient.id}</td>
-              <td>{recipient.last_name}</td>
-              <td>{recipient.first_name}</td>
-              <td>{recipient.sur_name}</td>
-              <td>{recipient.phone}</td>
-              <td>{recipient.position}</td>
-              <td>{recipient.department}</td>
-              <td>{recipient.state}</td>
-              <td>
-                <div className={"btn-group"}>
-                  <Button
-                    variant="outline-light me-1"
-                    className={"btn-edit_del success"}
-                    onClick={() => handleEdit(recipient.id)}
-                  >
-                    <EditSVG />
-                  </Button>
-                  <Button
-                    variant="outline-light"
-                    className={"btn-edit_del danger"}
-                    onClick={() => handleDelete(recipient.id)}
-                  >
-                    <DeleteSVG />
-                  </Button>
-                </div>
-              </td>
+      <div className="form_recipient_content">
+        <table className={"table"}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Фамилия</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Отчество</th>
+              <th scope="col">Телефон</th>
+              <th scope="col">Должность</th>
+              <th scope="col">Дирекция</th>
+              <th scope="col">Трудовые отношения</th>
+              <th scope="col"></th>
             </tr>
-          ))}
-        </tbody>
-        <tfoot></tfoot>
-      </table>
+          </thead>
+          <tbody>
+            {recipient.recipients.map(recipient => (
+              <tr key={recipient.id}>
+                <td>{recipient.id}</td>
+                <td>{recipient.last_name}</td>
+                <td>{recipient.first_name}</td>
+                <td>{recipient.sur_name}</td>
+                <td>{recipient.phone}</td>
+                <td>{recipient.position}</td>
+                <td>{recipient.department}</td>
+                <td>{recipient.state}</td>
+                <td>
+                  <div className={"btn-group"}>
+                    <Button
+                      variant="outline-light me-1"
+                      className={"btn-edit_del success"}
+                      onClick={() => handleEdit(recipient.id)}
+                    >
+                      <EditSVG />
+                    </Button>
+                    <Button
+                      variant="outline-light"
+                      className={"btn-edit_del danger"}
+                      onClick={() => handleDelete(recipient.id)}
+                    >
+                      <DeleteSVG />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
     </div>
   );
 });

@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import '../../components/base/mixin'
+import { mixinFont, mixinFontPrimary } from "../base/mixin";
 
-const Clock = () => {
-  const [clock, setClock] = useState('')
+const ClockStyle = styled.time`
+  width: 27.33vw;
+  text-align: right;
+  color: #ffffff;
+  //font-family: 'Roboto', sans-serif;
+  ${mixinFontPrimary('Roboto')}
+  ${mixinFont({size: '2.2rem', weight: 600})}
+  //font-size: 2.2rem;
+  //line-height: normal;
+  //font-weight: 600;
+  //font-style: normal;
+  //letter-spacing: 0;
+`
 
-const showTime = () => {
-    const date = new Date();
-    return setClock(date.toLocaleTimeString())
-  }
+export default function Clock() {
+  const [clock, setClock] = useState(new Date());
 
-  setTimeout(showTime, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => setClock(new Date()), 1000);
 
-  return (
-    <time className={"clock"}>{clock}</time>
-  );
-};
+    return () => {
+      clearInterval(interval)
+      console.log('cleaning...');
+    }
+  }, []);
 
-export default Clock;
+  return <ClockStyle>{clock.toLocaleTimeString()}</ClockStyle>;
+}

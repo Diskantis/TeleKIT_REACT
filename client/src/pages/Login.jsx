@@ -9,6 +9,7 @@ import { MAIN_ROUTE } from "../router/routes";
 import { login } from "../http/userAPI";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
+import { ButtonSubmit } from "../components/UI/ButtonStyle";
 
 const Login = observer(() => {
   const { user } = useContext(Context);
@@ -66,9 +67,9 @@ const Login = observer(() => {
               Пароль
             </InputAuth>
           </div>
-          <Button className={"submit-btn"} onClick={click}>
+          <ButtonSubmit onClick={click}>
             Войти
-          </Button>
+          </ButtonSubmit>
         </div>
       </div>
     </div>

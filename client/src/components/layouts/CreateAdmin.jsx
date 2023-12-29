@@ -6,6 +6,7 @@ import InputAuth from "../UI/InputAuth";
 import { registration } from "../../http/userAPI";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index";
+import { ButtonSubmit } from "../UI/ButtonStyle";
 
 const FormCreateAdmin = observer(() => {
   const { user } = useContext(Context);
@@ -103,9 +104,9 @@ const FormCreateAdmin = observer(() => {
         </InputAuth>
       </div>
       <div className={"reg_buttons"}>
-        <Button className={"submit-btn"} onClick={click}>
+        <ButtonSubmit onClick={click}>
           Зарегистрировать
-        </Button>
+        </ButtonSubmit>
       </div>
     </form>
   );

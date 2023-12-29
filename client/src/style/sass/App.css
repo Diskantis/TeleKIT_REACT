@@ -482,7 +482,22 @@ html {
   line-height: normal;
   letter-spacing: 0rem;
   text-align: center;
-  padding: 20px;
+  padding: 10px 0;
+}
+
+.form_recipient_content {
+  height: 755px;
+  overflow-y: scroll;
+}
+.form_recipient_content::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 0 0.375rem 0.375rem 0;
+  background-color: #212529;
+  margin-left: 10px;
+}
+.form_recipient_content::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #818181;
 }
 
 .form_create_row {
@@ -504,7 +519,7 @@ html {
 }
 
 .form_create_button {
-  width: 150px;
+  width: 130px;
   margin-top: 20px;
 }
 
@@ -711,6 +726,7 @@ html {
   background-color: #2c2c2c;
   font-size: 16px;
   margin-top: 10px;
+  padding-bottom: 20px;
 }
 
 .footer {
@@ -890,6 +906,7 @@ html {
 .table {
   width: calc(100vw - 390px);
   border-collapse: collapse;
+  margin-right: 10px;
 }
 
 .table th {

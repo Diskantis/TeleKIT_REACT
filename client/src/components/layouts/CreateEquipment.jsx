@@ -6,6 +6,7 @@ import InputAuth from "../UI/InputAuth";
 import { registration } from "../../http/userAPI";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index";
+import { ButtonSubmit } from "../UI/ButtonStyle";
 
 const CreateEquipment = observer(() => {
   const { user } = useContext(Context);
@@ -56,9 +57,9 @@ const CreateEquipment = observer(() => {
         </InputAuth>
       </div>
       <div style={{ display: "flex", gap: 10 }}>
-        <Button className={"submit-btn"} onClick={click}>
+        <ButtonSubmit onClick={click}>
           Зарегистрировать
-        </Button>
+        </ButtonSubmit>
       </div>
     </form>
   );

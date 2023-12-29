@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import InputCreate from "../UI/InputCreate";
 import InputSelect from "../UI/InputSelect";
-// import ButtonMUI from "../UI/MUI/buttonMUI";
-// import AutocompleteStyleMUI from "../UI/autocomplete/autocomplete";
+import { Button } from "react-bootstrap";
 
-import { createRecipient, fetchRecipients } from "../../http/repicientAPI";
+import { createRecipient } from "../../http/repicientAPI";
 import { observer } from "mobx-react-lite";
-
-// import InputSelectAutocomplete from "../UI/InputAutocomplete";
-// import { Button } from "react-bootstrap";
-import InputSelectAutocomplete from "../UI/autocomplete/InputAutocomplete";
-import ButtonMUI from "../UI/MUI/buttonMUI";
-// import ComboBox from "../UI/MUI/autocompleteMUI";
-// import AutocompleteIntroduction from "../UI/MUI/autocompleteMUI";
-// import ManageableStates from "../UI/MUI/autocompleteMUI";
-// import UseAutocomplete from "../UI/MUI/autocompleteMUI";
 
 const FormCreateRecipient = observer(() => {
   const [lastName, setLastName] = useState("");
@@ -23,30 +13,8 @@ const FormCreateRecipient = observer(() => {
   const [surName, setSurName] = useState("");
   const [position, setPosition] = useState("");
   const [department, setDepartment] = useState("");
-  const [departments, setDepartments] = useState([]);
   const [state, setState] = useState("Штатный сотрудник");
   const [phone, setPhone] = useState("");
-
-  const getDepartment = () => {
-    fetchRecipients().then(data => {
-      setDepartments(data);
-    });
-  };
-  useEffect(() => {
-    getDepartment();
-  }, []);
-
-  const filteredDepartment = departments.filter(depart => {
-    return depart.department.toLowerCase().includes(department.toLowerCase());
-  });
-
-  const arr_depart = Array.from(
-    new Set(filteredDepartment.map(depart => depart.department))
-  );
-
-  const selectDepartment = depart => {
-    setDepartment(depart);
-  };
 
   const addRecipient = () => {
     createRecipient({
@@ -74,15 +42,6 @@ const FormCreateRecipient = observer(() => {
         Добавить нового получателя оборудования
       </div>
       <div className={"form_create_row"}>
-        {/*<ManageableStates*/}
-        {/*  options={arr_depart}*/}
-        {/*  inputValue={inputValue}*/}
-        {/*  onInputChange={(event, newInputValue) => {*/}
-        {/*    setInputValue(newInputValue);*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  Дирекция*/}
-        {/*</ManageableStates>*/}
         <InputCreate
           value={lastName}
           className={"input_create_name"}
@@ -123,22 +82,13 @@ const FormCreateRecipient = observer(() => {
         >
           Должность
         </InputCreate>
-        <InputSelectAutocomplete
+        <InputCreate
           className={"input_create_department"}
-          suggestions={arr_depart}
-          create={selectDepartment}
+          value={department}
+          onChange={e => setDepartment(e.target.value)}
         >
           Дирекция
-        </InputSelectAutocomplete>
-        {/*<AutocompleteStyleMUI*/}
-        {/*  options={arr_depart}*/}
-        {/*  inputValue={department}*/}
-        {/*  onInputChange={(event, newInputValue) => {*/}
-        {/*    setDepartment(newInputValue);*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  Дирекция*/}
-        {/*</AutocompleteStyleMUI>*/}
+        </InputCreate>
         <InputSelect
           defaultValue={state}
           className={"select-state"}
@@ -151,7 +101,9 @@ const FormCreateRecipient = observer(() => {
           Трудовые отношения
         </InputSelect>
       </div>
-      <ButtonMUI click={addRecipient}>Добавить</ButtonMUI>
+      <Button className={"form_create_button"} onClick={addRecipient}>
+        Добавить
+      </Button>
     </div>
   );
 });
